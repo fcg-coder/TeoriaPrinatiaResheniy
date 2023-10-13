@@ -59,27 +59,36 @@ while 1
             disp(T2)
             
             while 1 
+                 x = -50:50;
                 % Вывод меню ЛР2 и получение выбора пользователя
-                upr1 = menu('ЛР2:', 'Ввод', 'Вывести все графики Гуасса', 'Вывести все графики Белла', 'Расчет', 'Вывод', 'Назад');
+                upr1 = menu('ЛР2:', 'Ввод','Расчет','Вывод', 'Вывести все графики Гуасса', 'Вывести все графики Белла', 'Назад');
                
                 switch upr1
                     case 1
-                    a = input('ВВедите А');
-                    sigmaG = input('Введите сигму');
-                   x = -50:50; 
-                    
-                    membersip = gaussMF(x, a, sigmaG);
-                    hold on;
-                    plot(x, membersip);
-                    xlabel('x');
-                    ylabel('Membership');
-                    title('Gaussian Functions');
-                    legend('Gaussian');   
-
-
-
+                        aG = input('Введите А для Гаусса ');
+                        sigmaG = input('Введите сигму А для Гаусса ');
+                        aB = input('Введите А для Колокольной ');
+                        sigmaB = input('Введите сигму А для Колокольной ');
+                       
 
                     case 2
+
+                        membersipG = gaussMF(x, aG, sigmaG);
+                        membersipB = bellMF(x, aB, sigmaB);
+
+
+                    case 3
+                                hold on;
+                                plot(x, membersipG);
+                                xlabel('x');
+                                ylabel('Membership');
+                                hold on;
+                                plot(x, membersipB);
+                                xlabel('x');
+                                ylabel('Membership');
+        
+
+                    case 4
                        q = [-10,0,30];
                        b = [3,4,9];
                        x = -50:50; 
@@ -104,7 +113,7 @@ while 1
 
 
 
-                    case 3
+                    case 5
                         
 
                        Q = [-10,0,30];
@@ -123,11 +132,7 @@ while 1
                                 legend('Bell');  
                            end
                        end
-                    case 4
-
-                    case 5
-
-                   case 6
+                    case 6
                         break
                 end
             end
